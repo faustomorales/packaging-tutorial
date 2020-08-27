@@ -1,6 +1,9 @@
+DOCUMENTATION_PORT ?= 5001
+
 init:
 	@-mkdir .venv
 	pipenv install --dev --skip-lock
+	pipenv run pip install -r docs/requirements.txt
 
 lab:
 	pipenv run jupyter lab
@@ -20,3 +23,7 @@ format_check:
 
 test:
 	pipenv run pytest $(TEST_SCOPE)
+
+.PHONY: docs
+docs:
+	pipenv run sphinx-autobuild -b html "docs" "docs/_build/html" --host 0.0.0.0 --port $(DOCUMENTATION_PORT) $(O)
