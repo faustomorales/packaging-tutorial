@@ -27,3 +27,8 @@ test:
 .PHONY: docs
 docs:
 	pipenv run sphinx-autobuild -b html "docs" "docs/_build/html" --host 0.0.0.0 --port $(DOCUMENTATION_PORT) $(O)
+
+dist:
+	rm -rf dist
+	pipenv run python setup.py sdist
+	pipenv run twine upload --repository-url https://test.pypi.org/legacy/ dist/*
