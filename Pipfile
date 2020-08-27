@@ -6,3 +6,7 @@ verify_ssl = true
 [dev-packages]
 flattener = {editable = true,path = "."}
 jupyterlab = "*"
+pylint = "*"
+mypy = "*"
+yapf = "*"
+pytest = "*"
